@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Semantic UI File Uploader - jQuery Plugin</title>
+
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css">
+	<style>
+		body{
+			padding: 20px;
+		}
+    </style>
+</head>
+<body>
+	<div id="file-upload"></div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.slim.min.js"></script>
+	
+	<script src="../src/plugin.js"></script>
+	
+	<script type="text/javascript">
+		
+		$(function() {
+			var fileUpload = $("#file-upload").semanticFileUploader({
+				defaultText: "Upload your picture",
+				onDrop: function(file){
+					//File object => https://developer.mozilla.org/en-US/docs/Web/API/File
+					console.log(file.name);
+					
+					// Upload your file using the method you prefer (ex: $.ajax) and call 
+					// the method finishUpload() as soon as your upload is finished;
+					setTimeout(function(){
+						fileUpload.uploadFinished();
+					}, 3000);
+				}
+			});	
+		});
+		
+	</script>
+</body>
+</html>
